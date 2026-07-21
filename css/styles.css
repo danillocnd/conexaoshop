@@ -205,8 +205,8 @@ footer{background:var(--bg-soft);color:var(--ink);margin-top:64px;padding:56px 2
   /* header */
   #header-top{gap:10px;padding:10px 16px}
   #site-header.scrolled #header-top{padding:6px 16px}
-  #logo-full{height:68px;order:1}
-  #site-header.scrolled #logo-full{height:44px}
+  #logo-full{height:80px;order:1}
+  #site-header.scrolled #logo-full{height:50px}
   #menu-toggle-mobile{display:block;order:2;margin-left:auto}
   #support-wrap{order:3}
   .search-box{order:4;flex-basis:100%;padding:8px 14px}
@@ -223,10 +223,11 @@ footer{background:var(--bg-soft);color:var(--ink);margin-top:64px;padding:56px 2
   .prod-card{flex:0 0 82%;min-width:0;padding:16px}
   .prod-img-wrap img{height:150px}
   .prod-name{font-size:16px;min-height:auto}
-  .buy-btn{border-radius:12px;width:44px;height:44px;padding:0;position:absolute;right:16px;bottom:16px}
-  .buy-btn span, .buy-btn{font-size:0}
+  .prod-price-block{padding-right:52px}
+  .buy-btn{flex-shrink:0;width:44px;height:44px;border-radius:12px;padding:0;position:absolute;right:16px;bottom:16px;display:flex;align-items:center;justify-content:center;font-size:0;background:#fff;border:2px solid var(--red);color:var(--red)}
   .buy-btn i{font-size:17px}
-  .prod-card{padding-bottom:16px}
+  .prod-card:hover .buy-btn, .buy-btn:active{background:var(--red);color:#fff}
+  .prod-card{padding-bottom:16px;position:relative}
   .prod-price-block{padding-right:52px}
   #nav-inner{padding:10px 16px}
   .quick-cats{display:flex;flex-direction:column;margin-bottom:8px}
@@ -234,7 +235,7 @@ footer{background:var(--bg-soft);color:var(--ink);margin-top:64px;padding:56px 2
 
   /* hero */
   #hero{padding:12px 12px 0}
-  #hero-inner{height:280px;border-radius:16px}
+  #hero-inner{height:380px;border-radius:16px}
   .hero-arrow{width:36px;height:36px;font-size:15px}
 
   /* category quick grid: horizontal carousel */
@@ -291,7 +292,7 @@ footer{background:var(--bg-soft);color:var(--ink);margin-top:64px;padding:56px 2
   .footer-tagline{text-align:left;font-size:22px}
   .footer-logo-row{margin-top:24px}
   .footer-logo-row img{height:64px}
-  .footer-bottom{flex-direction:column;align-items:center;text-align:center;gap:6px;max-width:none;margin-left:-16px;margin-right:-16px;padding-left:16px;padding-right:16px}
+  .footer-bottom{flex-direction:column;align-items:center;text-align:center;gap:6px;max-width:none;width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding-left:16px;padding-right:16px;box-sizing:border-box}
 
   #wa-float{width:48px;height:48px;font-size:22px;bottom:16px;right:16px}
 }
