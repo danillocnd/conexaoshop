@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<div id="top-bar"><div id="top-bar-track">
+  <span class="top-bar-msg active"><i class="bi bi-truck"></i> Entregamos em todo Distrito Federal</span>
+  <span class="top-bar-msg"><i class="bi bi-credit-card"></i> Parcelamos em até 18x no cartão</span>
+</div></div>
+
 <header id="site-header">
   <div class="wrap" id="header-top">
     <img id="logo-full" src="assets/logo-conexao.png" alt="Conexão Celulares" data-goto-home>
@@ -75,13 +80,13 @@
   <section id="hero">
     <div id="hero-inner">
       <div class="hero-slide active">
-        <a href="#" data-wa-link target="_blank"><img src="assets/banner1.png" alt="Banner rotativo 1"></a>
+        <a href="#" data-wa-link target="_blank"><picture><source media="(max-width:768px)" srcset="assets/banner4-mobile.png"><img src="assets/banner1.png" alt="Banner rotativo 1"></picture></a>
       </div>
       <div class="hero-slide">
-        <a href="#" data-wa-link target="_blank"><img src="assets/banner1.png" alt="Banner rotativo 2"></a>
+        <a href="#" data-wa-link target="_blank"><picture><source media="(max-width:768px)" srcset="assets/banner4-mobile.png"><img src="assets/banner1.png" alt="Banner rotativo 2"></picture></a>
       </div>
       <div class="hero-slide">
-        <a href="#" data-wa-link target="_blank"><img src="assets/banner1.png" alt="Banner rotativo 3"></a>
+        <a href="#" data-wa-link target="_blank"><picture><source media="(max-width:768px)" srcset="assets/banner4-mobile.png"><img src="assets/banner1.png" alt="Banner rotativo 3"></picture></a>
       </div>
       <button class="hero-arrow" id="hero-prev" aria-label="Anterior"><i class="bi bi-chevron-left"></i></button>
       <button class="hero-arrow" id="hero-next" aria-label="Próximo"><i class="bi bi-chevron-right"></i></button>
@@ -122,7 +127,9 @@
 </main>
 
 <footer>
-  <div class="footer-grid">
+  <div class="footer-toggle">
+  <button type="button" class="footer-toggle-btn" id="footer-toggle-btn">Mais Informações <i class="bi bi-chevron-down"></i></button>
+  <div class="footer-grid" id="footer-grid-collapsible">
     <div class="footer-col">
       <h4>Links úteis</h4>
       <div class="footer-links">
@@ -149,7 +156,7 @@
         <a class="footer-round-icon" data-maps-link target="_blank" aria-label="Google Maps"><img src="assets/icon-google-maps.webp" alt=""></a>
         <a class="footer-round-icon" data-waze-link target="_blank" aria-label="Waze"><img src="assets/icon-waze.webp" alt=""></a>
       </div>
-      <h4>Nossas Redes Sociais</h4>
+      <h4 style="margin-top:20px">Nossas Redes Sociais</h4>
       <p class="footer-address">Acompanhe todas as novidades</p>
       <div class="footer-icon-row">
         <a class="footer-round-icon red" href="#" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
@@ -160,6 +167,7 @@
       </div>
     </div>
 
+  </div>
   </div>
   <div class="footer-logo-row"><img src="assets/logo-conexao.png" alt="Conexão Celulares"></div>
   <div class="footer-bottom">

@@ -10,7 +10,7 @@ const CONFIG = {
   wazeUrl: 'https://ul.waze.com/ul?ll=-15.80293592%2C-47.88204432&navigate=yes&zoom=17&utm_campaign=default&utm_source=waze_website&utm_medium=lm_share_location',
   highlightBadge: 'tag', // 'tag' | 'discount' | 'none'
   sheetBase: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-30fDporPUQVWvM2ToXiLVUaLk8Gw51VMSnTVdM-eutN0b6vlCYRyZ2AjZ89az-IPKEwOBomKKFq0/pub',
-  gids: { smartphones: '0', smartwatches: '2121083194', tablets: '1933516438', acessorios: '1034165509', eletronicos: '1148834297', seminovos: '0' }
+  gids: { smartphones: '0', smartwatches: '2121083194', tablets: '1933516438', acessorios: '1034165509', eletronicos: '1148834297', seminovos: '992048711' }
 };
 
 const CATS = [
@@ -34,6 +34,9 @@ const BRANDS = [
 function formatPrice(n) {
   return 'R$ ' + Number(n).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
+function nameWithBreak(name) {
+  return (name || '').replace(/\s*\(/g, '<br>(');
+}
 function waLink(product) {
   const phone = CONFIG.whatsappNumber.replace(/\D/g, '');
   const msg = 'Olá! Quero comprar: ' + product.name + ' - ' + formatPrice(product.price);
@@ -54,10 +57,10 @@ function productCardHTML(p, imgIdPrefix) {
   return '<div class="prod-card">' +
     (badge ? '<span class="prod-badge">' + badge + '</span>' : '') +
     '<div class="prod-img-wrap"><img loading="lazy" src="' + p.img + '" alt="' + p.name + '"></div>' +
-    '<div class="prod-name">' + p.name + '</div>' +
+    '<div class="prod-name">' + nameWithBreak(p.name) + '</div>' +
     '<div class="prod-price-block"><div class="prod-price">' + formatPrice(p.price) + '</div>' +
     (p.oldPrice ? '<div class="prod-old-price">' + formatPrice(p.oldPrice) + '</div>' : '') + '</div>' +
-    '<a class="buy-btn" href="' + waLink(p) + '" target="_blank"><i class="bi bi-whatsapp"></i>Comprar</a>' +
+    '<a class="buy-btn" href="' + waLink(p) + '" target="_blank"><i class="bi bi-bag-check-fill"></i>Comprar</a>' +
     '</div>';
 }
 
@@ -77,14 +80,37 @@ function renderCategorySections() {
       '<div class="card-header-right"><button class="link-white" data-goto-cat="' + cat.key + '">Ver todos</button>' +
       '<div style="display:flex;gap:8px"><button class="arrow-btn" data-scroll="-680" data-row="' + cat.key + '"><i class="bi bi-chevron-left"></i></button>' +
       '<button class="arrow-btn" data-scroll="680" data-row="' + cat.key + '"><i class="bi bi-chevron-right"></i></button></div></div></div>' +
-      '<div class="row-scroll no-scrollbar' + (cat.key === 'smartphones' ? ' double' : '') + '" id="row-' + cat.key + '">' +
-      featured.map((p) => productCardHTML(p)).join('') + '</div></div>';
+      (cat.key === 'eletronicos'
+        ? '<div style="display:flex;gap:16px;padding:20px 20px 4px" id="row-wrap-' + cat.key + '">' +
+          inlinePromoCardHTML() +
+          '<div class="row-scroll no-scrollbar" id="row-' + cat.key + '" style="padding:0">' +
+          featured.map((p) => productCardHTML(p)).join('') + featured.map((p) => productCardHTML(p)).join('') + '</div></div>'
+        : '<div class="row-scroll no-scrollbar' + (cat.key === 'smartphones' ? ' double' : '') + '" id="row-' + cat.key + '">' +
+          featured.map((p) => productCardHTML(p)).join('') + featured.map((p) => productCardHTML(p)).join('') + '</div>') +
+      '</div>';
     container.appendChild(section);
 
     if (cat.key === 'smartwatches') container.appendChild(buildPromoBanners());
     if (cat.key === 'acessorios') container.appendChild(buildBrandsSection());
   });
   initRowAutoScroll();
+  sizeDoubleRows();
+  window.addEventListener('resize', sizeDoubleRows);
+}
+
+function sizeDoubleRows() {
+  const mobile = window.innerWidth <= 768;
+  document.querySelectorAll('.row-scroll.double').forEach((el) => {
+    if (mobile) { el.style.gridAutoColumns = '82%'; return; }
+    const gap = 16;
+    const colWidth = Math.max(190, (el.clientWidth - gap * 4) / 5);
+    el.style.gridAutoColumns = colWidth + 'px';
+  });
+}
+
+function inlinePromoCardHTML() {
+  return '<a class="promo-inline-card" href="' + '#' + '" data-wa-link target="_blank">' +
+    '<img src="assets/banner3.png" alt="Banner promocional"></a>';
 }
 
 function buildPromoBanners() {
@@ -105,14 +131,16 @@ function buildSeminovosSection() {
     if (wide) {
       return '<a class="bento-card wide" href="' + waLink(p) + '" target="_blank">' +
         '<img src="' + p.img + '" alt="' + p.name + '">' +
-        '<div><div class="bento-name">' + p.name + '</div>' +
+        '<div><div class="bento-name">' + nameWithBreak(p.name) + '</div>' +
         '<div style="font-size:11px;color:var(--muted3);margin-top:6px">Seminovos</div>' +
-        '<div class="bento-price-block" style="margin-top:10px"><div class="bento-price">' + formatPrice(p.price) + '</div></div></div></a>';
+        '<div class="bento-price-block" style="margin-top:10px"><div class="bento-price">' + formatPrice(p.price) + '</div>' +
+        '<span class="bento-buy-icon"><i class="bi bi-bag-fill"></i></span></div></div></a>';
     }
     return '<a class="bento-card square" href="' + waLink(p) + '" target="_blank">' +
       '<img src="' + p.img + '" alt="' + p.name + '">' +
-      '<div class="bento-name">' + p.name + '</div>' +
-      '<div class="bento-price-block"><div class="bento-price">' + formatPrice(p.price) + '</div></div></a>';
+      '<div class="bento-name">' + nameWithBreak(p.name) + '</div>' +
+      '<div class="bento-price-block"><div class="bento-price">' + formatPrice(p.price) + '</div>' +
+      '<span class="bento-buy-icon"><i class="bi bi-bag-fill"></i></span></div></a>';
   }).join('');
   wrap.innerHTML =
     '<div class="card-box"><div class="card-header"><div class="card-header-left">' +
@@ -172,8 +200,9 @@ function advanceRow(el, visibleRows, key) {
   if (!visibleRows.has(key) || el.matches(':hover')) return;
   const card = el.firstElementChild;
   const step = card ? card.getBoundingClientRect().width + 16 : 220;
-  if (el.scrollLeft >= el.scrollWidth - el.clientWidth - 1) smoothScrollTo(el, 0);
-  else smoothScrollTo(el, el.scrollLeft + step);
+  const halfWidth = el.scrollWidth / 2;
+  if (el.scrollLeft >= halfWidth - 1) el.scrollLeft -= halfWidth;
+  smoothScrollTo(el, el.scrollLeft + step);
 }
 function smoothScrollTo(el, target, duration = 900) {
   const start = el.scrollLeft, diff = target - start, startTime = performance.now();
@@ -228,13 +257,38 @@ function setHeroIndex(i) {
 // ---- Header scroll shrink ----
 function initHeaderScroll() {
   const header = document.getElementById('site-header');
+  const nav = document.getElementById('site-nav');
+  let lastY = window.scrollY;
   window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 40);
+    const y = window.scrollY;
+    header.classList.toggle('scrolled', y > 40);
+    if (nav) {
+      if (y > lastY && y > 80) nav.classList.add('nav-hidden');
+      else nav.classList.remove('nav-hidden');
+    }
+    lastY = y;
   }, { passive: true });
 }
 
 // ---- Quick menu drawer + support dropdown ----
 function initMenus() {
+  const topBarMsgs = document.querySelectorAll('.top-bar-msg');
+  if (topBarMsgs.length) {
+    let topBarIdx = 0;
+    setInterval(() => {
+      topBarMsgs[topBarIdx].classList.remove('active');
+      topBarIdx = (topBarIdx + 1) % topBarMsgs.length;
+      topBarMsgs[topBarIdx].classList.add('active');
+    }, 3500);
+  }
+  const footerToggleBtn = document.getElementById('footer-toggle-btn');
+  const footerGrid = document.getElementById('footer-grid-collapsible');
+  if (footerToggleBtn && footerGrid) {
+    footerToggleBtn.addEventListener('click', () => {
+      footerToggleBtn.classList.toggle('open');
+      footerGrid.classList.toggle('open');
+    });
+  }
   const quickToggles = document.querySelectorAll('.menu-toggle-btn');
   const quickOverlay = document.getElementById('quick-overlay');
   const quickDrawer = document.getElementById('quick-drawer');
