@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Conexão Celulares</title>
-<link rel="stylesheet" href="css/styles.css?v=2">
+<link rel="stylesheet" href="css/styles.css?v=21">
+<script src="image-slot.js"></script>
 </head>
 <body>
 
@@ -80,13 +81,13 @@
   <section id="hero">
     <div id="hero-inner">
       <div class="hero-slide active">
-        <a href="#" data-wa-link target="_blank"><picture><source media="(max-width:768px)" srcset="assets/banner4-mobile.png"><img src="assets/banner1.png" alt="Banner rotativo 1"></picture></a>
+        <a href="#" data-wa-link target="_blank"><picture><source media="(max-width:768px)" srcset="assets/banner1-mobile.png"><img src="assets/banner1.png" alt="Banner rotativo 1 - iPhone 17 Pro Max"></picture></a>
       </div>
       <div class="hero-slide">
-        <a href="#" data-wa-link target="_blank"><picture><source media="(max-width:768px)" srcset="assets/banner4-mobile.png"><img src="assets/banner1.png" alt="Banner rotativo 2"></picture></a>
+        <a href="#" data-wa-link target="_blank"><picture><source media="(max-width:768px)" srcset="assets/banner2-hero-mobile.png"><img src="assets/banner2-hero.png" alt="Banner rotativo 2 - AirPods 2 Pro"></picture></a>
       </div>
       <div class="hero-slide">
-        <a href="#" data-wa-link target="_blank"><picture><source media="(max-width:768px)" srcset="assets/banner4-mobile.png"><img src="assets/banner1.png" alt="Banner rotativo 3"></picture></a>
+        <a href="#" data-wa-link target="_blank"><picture><source media="(max-width:768px)" srcset="assets/banner3-hero-mobile.png"><img src="assets/banner3-hero.png" alt="Banner rotativo 3 - Apple Watch SE3"></picture></a>
       </div>
       <button class="hero-arrow" id="hero-prev" aria-label="Anterior"><i class="bi bi-chevron-left"></i></button>
       <button class="hero-arrow" id="hero-next" aria-label="Próximo"><i class="bi bi-chevron-right"></i></button>
@@ -127,52 +128,45 @@
 </main>
 
 <footer>
-  <div class="footer-toggle">
+  <div class="footer-grid-outer">
   <button type="button" class="footer-toggle-btn" id="footer-toggle-btn">Mais Informações <i class="bi bi-chevron-down"></i></button>
-  <div class="footer-grid" id="footer-grid-collapsible">
-    <div class="footer-col">
-      <h4>Links úteis</h4>
-      <div class="footer-links">
-        <a href="#">Termos de garantia</a><a href="#">Trocas e Devoluções</a>
-        <a href="#">Termos e condições</a><a data-wa-link target="_blank" href="#">Fale Conosco</a>
+  <div class="footer-col-links" id="footer-grid-collapsible">
+    <h4>Links úteis</h4>
+    <div class="footer-links-2col">
+      <div class="footer-links-sub">
+        <a href="#">Termos de garantia</a>
+        <a href="#">Termos e condições</a>
         <a href="#">Política de Privacidade</a>
       </div>
-    </div>
-    <div class="footer-col">
-      <h4>Categorias</h4>
-      <div class="footer-links" style="grid-template-columns:1fr">
-        <a href="#" data-goto-cat="smartphones">Smartphones</a>
-        <a href="#" data-goto-cat="smartwatches">Smartwatches</a>
-        <a href="#" data-goto-cat="tablets">Tablets</a>
-        <a href="#" data-goto-cat="acessorios">Acessórios</a>
-        <a href="#" data-goto-cat="eletronicos">Eletrônicos</a>
-        <a href="#" data-goto-cat="seminovos">Seminovos</a>
+      <div class="footer-links-sub">
+        <a href="#">Trocas e Devoluções</a>
+        <a data-wa-link target="_blank" href="#">Fale Conosco</a>
       </div>
     </div>
-    <div class="footer-col">
-      <h4>Endereço</h4>
-      <p class="footer-address" data-store-address></p>
-      <div class="footer-icon-row">
-        <a class="footer-round-icon" data-maps-link target="_blank" aria-label="Google Maps"><img src="assets/icon-google-maps.webp" alt=""></a>
-        <a class="footer-round-icon" data-waze-link target="_blank" aria-label="Waze"><img src="assets/icon-waze.webp" alt=""></a>
-      </div>
-      <h4 style="margin-top:20px">Nossas Redes Sociais</h4>
-      <p class="footer-address">Acompanhe todas as novidades</p>
-      <div class="footer-icon-row">
-        <a class="footer-round-icon red" href="#" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-        <a class="footer-round-icon red" data-instagram-link target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-        <a class="footer-round-icon red" href="#" target="_blank" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
-        <a class="footer-round-icon red" href="#" target="_blank" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-        <a class="footer-round-icon red" href="#" target="_blank" aria-label="X"><i class="bi bi-twitter-x"></i></a>
-      </div>
-    </div>
-
   </div>
+  <div class="footer-addr-col">
+    <h4>Endereço</h4>
+    <p class="footer-address" data-store-address></p>
+    <div class="footer-icon-row">
+      <a class="footer-round-icon" data-maps-link target="_blank" aria-label="Google Maps"><img src="assets/icon-google-maps.webp" alt=""></a>
+      <a class="footer-round-icon" data-waze-link target="_blank" aria-label="Waze"><img src="assets/icon-waze.webp" alt=""></a>
+    </div>
+    <h4 style="margin-top:22px">Nossas Redes Sociais</h4>
+    <p class="footer-address">Acompanhe todas as novidades</p>
+    <div class="footer-icon-row">
+      <a class="footer-round-icon red" href="#" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+      <a class="footer-round-icon red" data-instagram-link target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <a class="footer-round-icon red" href="#" target="_blank" aria-label="TikTok"><i class="bi bi-tiktok"></i></a>
+      <a class="footer-round-icon red" href="#" target="_blank" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+      <a class="footer-round-icon red" href="#" target="_blank" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+    </div>
   </div>
-  <div class="footer-logo-row"><img src="assets/logo-conexao.png" alt="Conexão Celulares"></div>
+  <div class="footer-visual-col">
+    <div class="footer-visual-img"><img src="assets/banner-footer.png" alt="Qualidade de verdade"></div>
+  </div>
   <div class="footer-bottom">
-    <span>Copyright © 2026 Conexão Celulares.<br>CNPJ: 00.000.000/0001-00 · Brasília/DF</span>
-    <span>Desenvolvido por <a href="https://designcnd.com.br/" target="_blank">CND Design Studio</a></span>
+    <span><div class="footer-logo-row"><img src="assets/logo-conexao.png" alt="Conexão Celulares"></div><br>© 2026 Conexão Celulares.Todos os direitos reservados<br>Desenvolvido por <a href="https://designcnd.com.br/" target="_blank">CND Design Studio</a></span>
+  </div>
   </div>
 </footer>
 

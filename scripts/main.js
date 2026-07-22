@@ -110,15 +110,14 @@ function sizeDoubleRows() {
 
 function inlinePromoCardHTML() {
   return '<a class="promo-inline-card" href="' + '#' + '" data-wa-link target="_blank">' +
-    '<img src="assets/banner3.png" alt="Banner promocional"></a>';
+    '<img src="assets/banner-eletronicos.png" alt="Banner promocional - Apple Mac Mini M4"></a>';
 }
 
 function buildPromoBanners() {
   const wrap = document.createElement('section');
   wrap.className = 'promo-grid';
   wrap.innerHTML =
-    '<a class="promo-banner" href="' + generalWaLink() + '" target="_blank"><img src="assets/banner2.png" alt="Banner parcelamento em até 18x"></a>' +
-    '<a class="promo-banner" href="' + generalWaLink() + '" target="_blank"><img src="assets/banner2.png" alt="Banner entregamos para todo o Brasil"></a>';
+    '<a class="promo-banner" href="' + generalWaLink() + '" target="_blank"><img src="assets/banner-promo.png" alt="Atendimento totalmente humanizado"></a>';
   return wrap;
 }
 
