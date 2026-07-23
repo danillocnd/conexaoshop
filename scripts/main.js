@@ -133,13 +133,13 @@ function buildSeminovosSection() {
         '<div><div class="bento-name">' + nameWithBreak(p.name) + '</div>' +
         '<div style="font-size:11px;color:var(--muted3);margin-top:6px">Seminovos</div>' +
         '<div class="bento-price-block" style="margin-top:10px"><div class="bento-price">' + formatPrice(p.price) + '</div>' +
-        '<span class="bento-buy-icon"><i class="bi bi-bag-fill"></i></span></div></div></a>';
+        '<span class="bento-buy-icon"><i class="bi bi-bag-check-fill"></i></span></div></div></a>';
     }
     return '<a class="bento-card square" href="' + waLink(p) + '" target="_blank">' +
       '<img src="' + p.img + '" alt="' + p.name + '">' +
       '<div class="bento-name">' + nameWithBreak(p.name) + '</div>' +
       '<div class="bento-price-block"><div class="bento-price">' + formatPrice(p.price) + '</div>' +
-      '<span class="bento-buy-icon"><i class="bi bi-bag-fill"></i></span></div></a>';
+      '<span class="bento-buy-icon"><i class="bi bi-bag-check-fill"></i></span></div></a>';
   }).join('');
   wrap.innerHTML =
     '<div class="card-box"><div class="card-header"><div class="card-header-left">' +

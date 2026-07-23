@@ -227,7 +227,7 @@ footer{background:#fff;color:var(--ink);margin-top:64px;padding:0px 60px 0px;pos
   .prod-img-wrap img{height:150px}
   .prod-name{font-size:16px;min-height:auto}
   .prod-price-block{padding-right:52px}
-  .buy-btn{flex-shrink:0;width:44px;height:44px;border-radius:12px;padding:0;position:absolute;right:16px;bottom:16px;display:flex;align-items:center;justify-content:center;font-size:0;background:#fff;border:2px solid var(--red);color:var(--red)}
+  .buy-btn{flex-shrink:0;width:44px;height:44px;border-radius:12px;padding:0 0 0 7px;position:absolute;right:16px;bottom:16px;display:flex;align-items:center;justify-content:center;font-size:0;background:#fff;border:2px solid var(--red);color:var(--red)}
   .buy-btn i{font-size:17px}
   .prod-card:hover .buy-btn, .buy-btn:active{background:var(--red);color:#fff}
   .prod-card{padding-bottom:16px;position:relative}
@@ -277,7 +277,7 @@ footer{background:#fff;color:var(--ink);margin-top:64px;padding:0px 60px 0px;pos
   .brand-item{width:110px;height:64px;padding:8px}
 
   /* footer */
-  footer{padding:32px 16px 20px;display:flex;flex-direction:column;align-items:flex-start;padding-top:10px}
+  footer{padding:30px 30px 30px 30px;display:flex;flex-direction:column;align-items:flex-start;padding-top:5px}
   .footer-grid-outer{display:contents}
   .footer-col-links{order:1}
   .footer-addr-col{order:3;margin-top:24px}
