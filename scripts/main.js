@@ -118,7 +118,7 @@ function buildPromoBanners() {
   const wrap = document.createElement('section');
   wrap.className = 'promo-grid';
   wrap.innerHTML =
-    '<a class="promo-banner" href="' + generalWaLink() + '" target="_blank"><picture><source media="(max-width:768px)" srcset="assets/banner1-mobile.png"><img src="assets/banner-promo.png" alt="Atendimento totalmente humanizado"></picture></a>';
+    '<a class="promo-banner" href="' + generalWaLink() + '" target="_blank"><picture><source media="(max-width:768px)" srcset="assets/banner-promo2.png"><img src="assets/banner-promo2.png" alt="Atendimento totalmente humanizado"></picture></a>';
   return wrap;
 }
 
