@@ -66,6 +66,7 @@ function productCardHTML(p, imgIdPrefix) {
 
 function renderCategorySections() {
   const container = document.getElementById('category-sections');
+  if (!container) return;
   container.innerHTML = '';
   CATS.forEach((cat) => {
     if (cat.key === 'seminovos') { container.appendChild(buildSeminovosSection()); return; }
@@ -117,7 +118,7 @@ function buildPromoBanners() {
   const wrap = document.createElement('section');
   wrap.className = 'promo-grid';
   wrap.innerHTML =
-    '<a class="promo-banner" href="' + generalWaLink() + '" target="_blank"><img src="assets/banner-promo.png" alt="Atendimento totalmente humanizado"></a>';
+    '<a class="promo-banner" href="' + generalWaLink() + '" target="_blank"><picture><source media="(max-width:768px)" srcset="assets/banner1-mobile.png"><img src="assets/banner-promo.png" alt="Atendimento totalmente humanizado"></picture></a>';
   return wrap;
 }
 
@@ -216,7 +217,9 @@ function smoothScrollTo(el, target, duration = 900) {
 
 // ---- Views: home / category / brand ----
 function showView(view) {
-  document.getElementById('view-home').classList.toggle('hidden', view !== 'home');
+  const home = document.getElementById('view-home');
+  if (!home) { window.location.href = 'index.html'; return; }
+  home.classList.toggle('hidden', view !== 'home');
   document.getElementById('view-category').classList.toggle('hidden', view !== 'category');
   document.getElementById('view-brand').classList.toggle('hidden', view !== 'brand');
   window.scrollTo(0, 0);
@@ -313,7 +316,7 @@ function initMenus() {
 function initClickDelegation() {
   document.body.addEventListener('click', (e) => {
     const catBtn = e.target.closest('[data-goto-cat]');
-    if (catBtn) { e.preventDefault(); goToCategory(catBtn.dataset.gotoCat); return; }
+    if (catBtn) { if (!document.getElementById('category-sections')) { window.location.href = 'index.html'; return; } e.preventDefault(); goToCategory(catBtn.dataset.gotoCat); return; }
     const brandBtn = e.target.closest('[data-goto-brand]');
     if (brandBtn) { goToBrand(brandBtn.dataset.gotoBrand); return; }
     const home = e.target.closest('[data-goto-home]');
